@@ -43,8 +43,8 @@ Financial analysts concluded that **annual members generate significantly higher
 
 ## Phase 2: Prepare (Data Sourcing & Integrity)
 
-- **Data Source:** Cyclistic historical bike trip records (12 consecutive months of public data provided by Motivate International Inc.)[cite: 1].
-- **Data Volume:** 6,006,904 raw ride records across Chicago[cite: 1, 16].
+- **Data Source:** Cyclistic historical bike trip records (12 consecutive months of public data provided by Motivate International Inc.).
+- **Data Volume:** 6,006,904 raw ride records across Chicago.
 - **Data Integrity (ROCCC):**
   - **Reliable & Original:** Authentic automated municipal bike-docking transaction logs.
   - **Comprehensive:** Complete timestamp, coordinate, bike type, and user classification attributes.
@@ -55,14 +55,14 @@ Financial analysts concluded that **annual members generate significantly higher
 
 ## Phase 3: Process (Data Cleaning & SQL Transformations)
 
-All data ingestion, cleansing, and aggregations were executed in **Google BigQuery**[cite: 1]:
-1. **Consolidation:** Merged 12 separate monthly tables using `UNION ALL` into a staging environment[cite: 15].
+All data ingestion, cleansing, and aggregations were executed in **Google BigQuery**:
+1. **Consolidation:** Merged 12 separate monthly tables using `UNION ALL` into a staging environment.
 2. **Quality Control & Cleansing:**
    - Excluded invalid records with missing station identifiers or coordinates for location-based analysis.
    - Filtered out negative ride durations (`ended_at < started_at`) and administrative test/dock check records (`ride_length < 1 minute` or `> 1,440 minutes`).
 3. **Feature Engineering:**
    - Derived `ride_length_minutes` using `TIMESTAMP_DIFF(ended_at, started_at, SECOND) / 60.0`.
-   - Extracted temporal variables: `day_of_week`, `hour_of_day`, and `month`[cite: 14, 15].
+   - Extracted temporal variables: `day_of_week`, `hour_of_day`, and `month`.
    - Aggregated findings into compact datasets for Tableau visualization.
 
 ---
@@ -71,10 +71,10 @@ All data ingestion, cleansing, and aggregations were executed in **Google BigQue
 
 | Metric / Dimension | Annual Members | Casual Riders |
 | :--- | :--- | :--- |
-| **Total Trips Volume** | **3,896,783** (64.9%)[cite: 15] | **2,110,121** (35.1%)[cite: 15] |
-| **Average Ride Duration** | **11.9 minutes** (Utility commute)[cite: 15] | **17.6 – 20.5 minutes** (Leisure exploration)[cite: 15] |
-| **Peak Commute Hours** | Bimodal spikes at **8:00 AM** and **5:00 PM**[cite: 16] | Gradual afternoon curve peaking **12:00 PM – 5:00 PM**[cite: 16] |
-| **Peak Days of Week** | Tuesday – Thursday (Workdays)[cite: 15] | Saturday & Sunday (Weekends)[cite: 15] |
+| **Total Trips Volume** | **3,896,783** (64.9%) | **2,110,121** (35.1%) |
+| **Average Ride Duration** | **11.9 minutes** (Utility commute) | **17.6 – 20.5 minutes** (Leisure exploration) |
+| **Peak Commute Hours** | Bimodal spikes at **8:00 AM** and **5:00 PM** | Gradual afternoon curve peaking **12:00 PM – 5:00 PM** |
+| **Peak Days of Week** | Tuesday – Thursday (Workdays) | Saturday & Sunday (Weekends) |
 | **Seasonality Trend** | Consistent year-round; moderate winter dip | Highly weather-dependent; summer surge (Jun–Aug) |
 | **Top Start Stations** | Transit stations, offices (Canal St, Clinton St) | Lakefront, parks (Navy Pier, Millennium Park) |
 
@@ -96,11 +96,11 @@ An interactive multi-metric dashboard was designed in Tableau Public to present 
 ## Phase 6: Act (Executive Business Recommendations)
 
 1. **Seasonal & Weekend Membership Tier:**
-   - *Insight:* Casual riders concentrate heavily on weekends and summer months, avoiding standard annual commitments[cite: 15].
+   - *Insight:* Casual riders concentrate heavily on weekends and summer months, avoiding standard annual commitments.
    - *Recommendation:* Introduce a **"Summer Pass"** (June–August) and a **"Weekend Warrior Pass"** with an option to credit pass costs toward a full annual membership.
 2. **Geo-Targeted Station Marketing:**
    - *Insight:* Top casual origin points are concentrated at recreational hotspots (Navy Pier, Millennium Park, Lake Shore Dr).
    - *Recommendation:* Deploy QR-code kiosks at these lakefront stations offering immediate on-app signup discounts, paired with geofenced mobile push notifications upon docking.
 3. **Ride Duration Value Proposition:**
-   - *Insight:* Casual riders average 17–20+ minutes per trip compared to 12 minutes for members[cite: 15].
+   - *Insight:* Casual riders average 17–20+ minutes per trip compared to 12 minutes for members.
    - *Recommendation:* Market membership benefits emphasizing extended ride caps (e.g., "First 45 minutes free per ride for members vs. 30 minutes for single passes") to show tangible savings for long leisure trips.
