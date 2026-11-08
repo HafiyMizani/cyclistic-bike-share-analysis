@@ -85,6 +85,8 @@ All data ingestion, cleansing, and aggregations were executed in **Google BigQue
 An interactive multi-metric dashboard was designed in Tableau Public to present the behavioral dichotomy between both customer segments.
 
 🔗 **Live Interactive Dashboard:** [View on Tableau Public](https://public.tableau.com/views/CyclisticBike-ShareCaseStudyUserBehaviorAnalysis_17941103228910/CyclisticBike-ShareAnnualMembersvsCasualRidersAnalysis?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+<img width="1246" height="1098" alt="image" src="https://github.com/user-attachments/assets/6ab9581a-3baa-4ce0-b30f-8da8803b98fc" />
+
 
 ### Dashboard Highlights:
 - **Volume & Trip Length Comparison:** Demonstrates member dominance in ride count alongside casual dominance in trip duration.
